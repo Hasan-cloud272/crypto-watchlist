@@ -1,0 +1,36 @@
+.star {
+  border: none;
+  background: none;
+  font-size: 20px;
+  line-height: 1;
+  color: #f59e0b;
+  cursor: pointer;
+}
+
+.coin {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.name {
+  font-weight: 600;
+}
+
+.symbol {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.number {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.positive {
+  color: #16a34a;
+}
+
+.negative {
+  color: #dc2626;
+}

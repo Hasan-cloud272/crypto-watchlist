@@ -1,0 +1,32 @@
+.scroll {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.table th {
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.table .number {
+  text-align: right;
+}
+
+.empty {
+  padding: 48px 0;
+  text-align: center;
+  color: #6b7280;
+}
