@@ -11,8 +11,14 @@
 .table td {
   padding: 12px 10px;
   border-bottom: 1px solid #e5e7eb;
-  text-align: left;
   white-space: nowrap;
+}
+
+.table th {
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 600;
+  text-align: left;
 }
 
 .table th {
