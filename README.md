@@ -2,6 +2,8 @@
 
 A responsive dashboard for tracking the top 50 cryptocurrencies by market cap. Built with React and Vite on top of the public CoinGecko API.
 
+**Live demo:** https://crypto-watchlist-inky.vercel.app
+
 ![Crypto Watchlist screenshot](docs/screenshot.png)
 
 ## Features
