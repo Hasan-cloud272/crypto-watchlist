@@ -1,19 +1,25 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 
 export function useFetch(fetcher) {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [reloadKey, setReloadKey] = useState(0);
+  const isSilentRef = useRef(false);
 
   useEffect(() => {
     const controller = new AbortController();
+    const isSilent = isSilentRef.current;
+    isSilentRef.current = false;
 
     fetcher(controller.signal)
-      .then(setData)
+      .then((result) => {
+        setData(result);
+        setError(null);
+      })
       .catch((err) => {
         if (err.name === "AbortError") return;
-        setError(err);
+        if (!isSilent) setError(err);
       })
       .finally(() => {
         if (!controller.signal.aborted) setIsLoading(false);
@@ -23,10 +29,16 @@ export function useFetch(fetcher) {
   }, [fetcher, reloadKey]);
 
   const refetch = useCallback(() => {
+    isSilentRef.current = false;
     setIsLoading(true);
     setError(null);
     setReloadKey((key) => key + 1);
   }, []);
 
-  return { data, error, isLoading, refetch };
+  const refresh = useCallback(() => {
+    isSilentRef.current = true;
+    setReloadKey((key) => key + 1);
+  }, []);
+
+  return { data, error, isLoading, refetch, refresh };
 }

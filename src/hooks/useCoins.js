@@ -2,9 +2,11 @@ import { useState, useMemo, useCallback } from "react";
 import { useFetch } from "./useFetch";
 import { useDebounce } from "./useDebounce";
 import { useLocalStorage } from "./useLocalStorage";
+import { useInterval } from "./useInterval"; // ← новая строка
 import { fetchTopCoins } from "../services/coingecko";
 
 const loadCoins = (signal) => fetchTopCoins({ signal });
+const AUTO_REFRESH_MS = 60_000; // ← новая строка
 
 export const SORT_OPTIONS = [
   { value: "market-cap", label: "По капитализации" },
@@ -24,8 +26,9 @@ const SORTERS = {
 };
 
 export function useCoins() {
-  const { data, error, isLoading, refetch } = useFetch(loadCoins);
-
+  const { data, error, isLoading, refetch, refresh } = useFetch(loadCoins); // ← добавили refresh
+  useInterval(refresh, AUTO_REFRESH_MS); // ← новая строка
+  
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState("market-cap");
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
