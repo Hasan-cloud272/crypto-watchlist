@@ -3,7 +3,7 @@
   background: none;
   font-size: 20px;
   line-height: 1;
-  color: #f59e0b;
+  color: var(--star);
   cursor: pointer;
 }
 
@@ -18,7 +18,7 @@
 }
 
 .symbol {
-  color: #6b7280;
+  color: var(--text-muted);
   font-size: 13px;
 }
 
@@ -28,9 +28,9 @@
 }
 
 .positive {
-  color: #16a34a;
+  color: var(--positive);
 }
 
 .negative {
-  color: #dc2626;
+  color: var(--negative);
 }

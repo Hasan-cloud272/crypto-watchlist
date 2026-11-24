@@ -1,14 +1,9 @@
 .select {
   padding: 10px 14px;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--border-input);
   border-radius: 8px;
-  background: #fff;
+  background: var(--surface);
   font-size: 16px;
+  color: var(--text);
   cursor: pointer;
-}
-
-.select:focus {
-  outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
 }
